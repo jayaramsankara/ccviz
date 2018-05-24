@@ -26,8 +26,7 @@ errorPlot <-  function(csvFile) {
   return (q + ggtitle("Chat EWT Errors") + scale_x_continuous(limits = c(-300, 100)) +  scale_y_continuous(limits = c(0, 120)))
 }
 
-#errorPlot("chatewtawt_4_iter2.csv")
-#errorPlot("chatewtawt_1.csv")
+
 grid.arrange(errorPlot("chatewtawt_1.csv"),
-            errorPlot("chatewtawt_2.csv"),errorPlot("chatewtawt_3_iter2.csv"),errorPlot("chatewtawt_4_iter2.csv"),
+            errorPlot("chatewtawt_2.csv"),
              ncol = 2)
