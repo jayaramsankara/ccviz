@@ -1,19 +1,33 @@
 library(tidyverse)
+library(gridExtra)
 
 errorPlot <-  function(csvFile) {
-ewtdata <- read.csv(csvFile, header = FALSE)
+  ewtdata <- read.csv(csvFile, header = FALSE)
+  
+  fdata <- ewtdata %>% filter(V3 < 86000)
+  
+  
+  diffdata <-
+    fdata %>% data.frame(
+      diff1 = .$V3 - .$V5,
+      diff2 = .$V4 - .$V5,
+      errorType = "M/M/C Error",
+      d = "Simple EWT Error"
+    )
+  
+  diffdata
+  p <-
+    ggplot(data = diffdata) + geom_point(aes(x = diff1, y = V5, color = errorType)) + geom_point(aes(x =
+                                                                                                       diff2, y = V5, color = d))
 
-fdata <- ewtdata %>% filter(V3 < 86000)
+  q <-
+    p + xlab("Error Factor") + ylab("Actual Wait Time (sec)") + theme_minimal()
 
-
-diffdata <- fdata %>% data.frame(diff1 = .$V5-.$V3, diff2 = .$V5 - .$V4, errorType= "M/M/C Error", d="Simple EWT Error")
-
-p <- ggplot(data = diffdata ) + geom_point(aes(x=diff1, y=V5, color=errorType)) + geom_point(aes(x=diff2, y=V5, color =d))
-
-q <- p + xlab("Error Factor") + ylab("Actual Wait Time (sec)") + theme_minimal()
-
-return ( q + ggtitle("Chat EWT Errors") )
+  return (q + ggtitle("Chat EWT Errors") + scale_x_continuous(limits = c(-300, 100)) +  scale_y_continuous(limits = c(0, 120)))
 }
 
-
-errorPlot("chatewtawt_1.csv")
+#errorPlot("chatewtawt_4_iter2.csv")
+#errorPlot("chatewtawt_1.csv")
+grid.arrange(errorPlot("chatewtawt_1.csv"),
+            errorPlot("chatewtawt_2.csv"),errorPlot("chatewtawt_3_iter2.csv"),errorPlot("chatewtawt_4_iter2.csv"),
+             ncol = 2)
