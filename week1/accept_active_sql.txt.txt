@@ -1,0 +1,6 @@
+
+unload to '/tmp/data.csv' DELIMITER ',' select s1.acceptTime,s1.talkTime,s1.resourceID,s1.contactID,s3.resourceName,s2.csqRecordID,s3.active 
+from TextAgentConnectionDetail s1, TextContactQueueDetail s2, resource s3 where s2.contactID = s1.contactID and s2.disposition = 2 and
+ s1.resourceId = s2.resourceID and s3.active = 't' ;
+
+

@@ -1,0 +1,5 @@
+unload to '/tmp/data.csv' DELIMITER ',' select s1.resourceID as resourceID,s1.contactID as contactId,
+s2.resourceName as resourceName ,s3.csqRecordID as csqID,s4.contacttype as contactType,s5.rating as Rating 
+from TextAgentConnectionDetail s1, resource s2,TextContactQueueDetail s3,textcontactdetail s4,textratingdetail s5 
+where s2.active = 't' and s1.resourceid = s2.resourceid and s1.contactID = s3.contactID and s3.disposition = 2 
+and s3.contactid = s4.contactid and s4.contactid = s5.contactid;
