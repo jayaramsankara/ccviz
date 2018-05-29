@@ -1,6 +1,6 @@
 library(ggplot2)
 library(plyr)
-accept_active_time <- read.csv("C:/Users/aymathur/Desktop/charts/accept_active_time.csv" , header = FALSE)
+accept_active_time <- read.csv("accept_active_time.csv" , header = FALSE)
  #accept time
 
 plot_graph <- function(accept_active_time, x , p ,t)
