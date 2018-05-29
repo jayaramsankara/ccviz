@@ -1,6 +1,5 @@
 library(ggplot2)
 library(plyr)
-library(dplyr)
 
 csqRating <- read.csv("C:/Users/aymathur/Desktop/charts/csqRating.csv",header = FALSE)
 csq <- as.factor(csqRating$V4)
