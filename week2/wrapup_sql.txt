@@ -1,0 +1,4 @@
+
+unload to '/tmp/wrapup.csv' DELIMITER ',' select s1.reasonid, s2.categoryid,s3.name,s2.reason,s4.resourcename from textagentwrapupdetail s1,
+wrapupreasons s2,wrapupcategory s3,resource s4 where s1.reasonid = s2.reasonid and s2.categoryid = s3.categoryid and
+ s1.resourceid = s4.resourceid;
