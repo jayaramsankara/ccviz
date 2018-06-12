@@ -13,7 +13,7 @@ p2
 p5 <- ggplot(data=data.frame(x=ratings), aes(x)) + stat_function(fun=dnorm, args=list(mean=avg,sd =sdev), color="blue", size=1)
 p6 <- p5 + scale_y_continuous(breaks = NULL) + xlab("Chat Ratings") + ylab("Density") + ggtitle("Chat Ratings Distribution")
 p3 <- p2 + stat_function(mapping=aes(x=x), fun=dnorm, args=list(mean=avg,sd =sdev), color="red", size=1)
-
+p3
 
 
 hp <- ggplot(data=rdata) + geom_bar(aes(x=V2)) +coord_flip() + ggtitle("Chat Ratings Distribution")

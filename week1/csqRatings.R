@@ -10,7 +10,7 @@ cdat <- ddply(csqRating, "csq", summarise, rating.mean=mean(rating))
 #density plot
  ggplot(csqRating, aes(x = rating , color = csq))+ 
   geom_density(size = 1,adjust = 1.5)+xlim(0,6)+
-  labs(y = "Distribution",x = "Rating",
+  labs(y = "Density",x = "Rating",
        title = "Rating distribution per csq group by Chat type")+
   scale_colour_brewer(palette="Dark2")+
   geom_vline(data=cdat, aes(xintercept=rating.mean, colour=csq),
@@ -19,7 +19,7 @@ cdat <- ddply(csqRating, "csq", summarise, rating.mean=mean(rating))
 #2
  ggplot(csqRating, aes(x = rating ))+ 
    geom_density(size = 1,adjust = 1.5)+
-   labs(y = "Distribution",x = "Rating",
+   labs(y = "Density",x = "Rating",
         title = "Rating distribution per csq group by Chat type")+
    scale_colour_brewer(palette="Dark2")+
    facet_grid(V5~V4)
