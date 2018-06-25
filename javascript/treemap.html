@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8"/>
+<head>
+    <title>tree</title>
+</head>
+<body>
+<script src="http://d3plus.org/js/d3.js"></script>
+<script src="http://d3plus.org/js/d3plus.js"></script>
+<script src = "http://d3js.org/d3.v3.min.js"></script>
+<div id="container" style="height: auto; width: auto"></div>
+
+
+<script>
+  
+  d3.json("file.json" , function(data){
+
+    var visualization = d3plus.viz()
+            .container("#container")
+            .data(data)
+            .type("tree_map")
+            .id(["category","wrapup"])
+            .size("count")
+            .draw()
+
+  });
+
+  
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>csq Ratings</title>
+</head>
+<body>
+<script src="http://www.d3plus.org/js/d3.js"></script>
+<script src="http://www.d3plus.org/js/d3plus.js"></script>
+
+<script src = "http://d3js.org/d3.v3.min.js"></script>
+
+<div id="viz"></div>
+
+<script>
+  d3.json("csqRating.json" , function(data)
+  {
+  				console.log(data);
+				  var visualization = d3plus.viz()
+				    .container("#viz")
+				    .data(data)
+				    .type("box")
+				    .id("Id")
+				    .x("csq")
+				    .y("rating")
+				    .draw()
+
+    });
+</script>
+
+</body>
+</html>
